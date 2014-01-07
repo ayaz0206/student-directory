@@ -17,3 +17,7 @@ puts "Nabin Rai"
 puts "Peter Saxton"
 puts "Rolando Barbella"
 puts "Roy Gardiner"
+
+print "Overall, there are "
+print 9
+puts " great students!""
