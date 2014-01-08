@@ -1,22 +1,3 @@
-# Putting all the students into an array
-students = [
-	 ["Abraham Thomas", :january],
-	 ["Andrew Krahmal", :january],
-	 ["Ayaz Goulamabasse", :january],
-	 ["Berta Gutierrez", :january],
-	 ["Biwek Shrestha", :january],
-	 ["Colin Frankish", :january],
-	 ["James Hunter", :january],
-	 ["Jorja Tracy Hung", :january],
-	 ["Kalle Malmiharju", :january],
-	 ["Makis Otman", :january],
-	 ["Megan Folsom", :january],
-	 ["Mihai-Liviu Cojocar", :january],
-	 ["Nabin Rai", :january],
-	 ["Peter Saxton", :january],
-	 ["Rolando Barbella", :january],
-	 ["Roy Gardiner", :january],
-]
 def print_header
 	puts "These are the students in my cohort at Makers Academy"
 	puts "------------"
@@ -29,9 +10,29 @@ def print(students)
 end
 
 def print_footer(names)
-	puts "Overall, there are #{students.length} great students"
+	puts "Overall, there are #{names.length} great students"
 end 
-# nothing happens until we call the methods.
+
+def input_students
+	puts "Please enter the names of the students"
+	puts "To finish, just press enter twice"
+	# Creating an empty array
+	students =[]
+	# Now, to ask input from user to get the first name
+	name = gets.chomp
+	# While the name is not empty, repeat this code
+	while !name.empty? do
+		# Add the student hash to the array
+		students << {:name => name, :cohort => :november}
+		puts "Now there are #{students.length} students"
+		# Get another name from the user
+		name = gets.chomp
+	end
+	# return the array of students
+	students
+end
+
+students = input_students
 print_header
 print(students)
 print_footer(students)
