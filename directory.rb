@@ -1,21 +1,21 @@
 # Putting all the students into an array
 students = [
-	 "Abraham Thomas"
-	 "Andrew Krahmal"
-	 "Ayaz Goulamabasse"
-	 "Berta Gutierrez"
-	 "Biwek Shrestha"
-	 "Colin Frankish"
-	 "James Hunter"
-	 "Jorja Tracy Hung"
-	 "Kalle Malmiharju"
-	 "Makis Otman"
-	 "Megan Folsom"
-	 "Mihai-Liviu Cojocar"
-	 "Nabin Rai"
-	 "Peter Saxton"
-	 "Rolando Barbella"
-	 "Roy Gardiner"
+	 ["Abraham Thomas", :january],
+	 ["Andrew Krahmal", :january],
+	 ["Ayaz Goulamabasse", :january],
+	 ["Berta Gutierrez", :january],
+	 ["Biwek Shrestha", :january],
+	 ["Colin Frankish", :january],
+	 ["James Hunter", :january],
+	 ["Jorja Tracy Hung", :january],
+	 ["Kalle Malmiharju", :january],
+	 ["Makis Otman", :january],
+	 ["Megan Folsom", :january],
+	 ["Mihai-Liviu Cojocar", :january],
+	 ["Nabin Rai", :january],
+	 ["Peter Saxton", :january],
+	 ["Rolando Barbella", :january],
+	 ["Roy Gardiner", :january],
 ]
 def print_header
 	puts "These are the students in my cohort at Makers Academy"
