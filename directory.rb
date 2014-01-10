@@ -16,6 +16,12 @@ def first_letter_filter(students)
     print(selected_students)
 end
 
+def namelength(students)
+	puts "Please choose the maximum name length in characters"
+	size = gets.chomp.to_i
+	selected_students = students.select { |student| student[:name].length <= size}
+	print(selected_students)
+end
 
 def print_footer(names)
 	puts "Overall, there are #{names.length} great students"
@@ -49,3 +55,4 @@ print_header
 print(students)
 print_footer(students)
 first_letter_filter(students)
+namelength(students)
