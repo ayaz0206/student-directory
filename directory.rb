@@ -9,6 +9,14 @@ def print(students)
 	end
 end
 
+def first_letter_filter(students) 
+    puts "Choose letter:"
+    letter = gets.chomp
+    selected_students = students.select { |student| student[:name].chars.first == letter }
+    print(selected_students)
+end
+
+
 def print_footer(names)
 	puts "Overall, there are #{names.length} great students"
 end 
@@ -40,3 +48,4 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
+first_letter_filter(students)
