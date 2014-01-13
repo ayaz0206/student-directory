@@ -24,12 +24,16 @@ def namelength(students)
 end
 
 def print_footer(names)
-	puts "Overall, there are #{names.length} great students"
+	if names.length == 1
+		puts "There is one student.".center(100)
+	else
+		puts "Overall, there are #{names.length} great students.".center(100)
+	end
 end 
 
 def input_students
-	puts "Please enter the names of the students"
-	puts "To finish, just press enter twice"
+	puts "Please enter the names of the students".center(100)
+	puts "To finish, just press enter twice".center(100)
 	# Creating an empty array
 	students =[]
 	# Now, to ask input from user to get the first name
