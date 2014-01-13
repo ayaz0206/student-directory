@@ -1,6 +1,6 @@
 def print_header
-	puts "These are the students in my cohort at Makers Academy"
-	puts "------------"
+	puts "These are the students in my cohort at Makers Academy".center(100)
+	puts "------------".center(100)
 end
 
 def print(students)
@@ -37,7 +37,7 @@ def input_students
 	# While the name is not empty, repeat this code
 	while !name.empty? do
 		# Add the student hash to the array
-		students << {:name => name, :cohort => :november}
+		students << {:name => name, :cohort => :january}
 		if students.length > 1
 			puts "Now there are #{students.length} students"
 		else
