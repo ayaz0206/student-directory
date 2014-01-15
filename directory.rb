@@ -1,10 +1,12 @@
+@students = []
+
 def print_header
 	puts "These are the students in my cohort at Makers Academy !".center(100)
 	puts "------------".center(100)
 end
 
-def print(students)
-	students.each_with_index do |student, x|
+def print_students_list
+	@students.each_with_index do |student, x|
 		puts "#{x + 1}. #{student[:name]} (#{student[:cohort]} cohort) from #{student[:country]}"
 	end
 end
@@ -23,46 +25,18 @@ def namelength(students)
 	print(selected_students)
 end
 
-def print_footer(names)
-	if names.length == 1
+def print_footer
+	if @students.length == 1
 		puts "There is one student.".center(100)
 	else
-		puts "Overall, there are #{names.length} great students.".center(100)
-	end
-end 
-
-def interactive_menu
-	students = []
-	loop do
-		puts "1. Input the students"
-		puts "2. Show the students"
-		puts "9. Exit."
-
-		selection = gets.chomp
-
-		case selection
-		when "1"
-			students = input_students
-		when "2"
-			print_header
-			print(students)
-			print_footer(students)
-		when "9"
-			exit
-		else
-			puts "I don't understand. Please try again."
-		end
-
+		puts "Overall, there are #{@students.length} great students.".center(100)
 	end
 end
-
 
 def input_students
 	puts "Please enter the names of the students:".center(100)
 	puts "To finish, just press enter twice..".center(100)
 
-	# Creating an empty array
-	students =[]
 	# Now, to ask input from user to get the first name
 	name = gets.chomp
 	
@@ -74,23 +48,55 @@ def input_students
 
 		puts "Please enter the country"
 		country = gets.chomp
-		students << {:name => name, :cohort => cohort, :country => country}
-		if students.length > 1
-			puts "Now there are #{students.length} students"
+		@students << {:name => name, :cohort => cohort, :country => country}
+		if @students.length > 1
+			puts "Now there are #{@students.length} students"
 		else
-			puts "Now there is #{students.length} student"
+			puts "Now there is #{@students.length} student"
 		end
 		# Get another name from the user
 		name = gets.chomp
+		
 	end
-	# return the array of students
-	students
+end
+	
+
+def print_menu
+		puts "1. Input the students".center(100)
+		puts "2. Show the students".center(100)
+		puts "9. Exit.".center(100)
+end
+
+def show_students
+	print_header
+	print_students_list
+	print_footer
+end
+
+def process(selection)
+	case selection
+		when "1"
+			input_students
+		when "2"
+			show_students
+		when "9"
+			exit
+		else
+			puts "I don't understand. Please try again."
+	end
+end
+
+def interactive_menu
+	loop do
+		print_menu
+		process(gets.chomp)
+	end
 end
 
 interactive_menu
 students = input_students
 print_header
-print(students)
-print_footer(students)
+print_students_list
+print_footer
 # first_letter_filter(students)
 # namelength(students)
