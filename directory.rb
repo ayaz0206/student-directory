@@ -1,5 +1,10 @@
 @students = []
 
+def print_welcome
+	puts "Welcome to the Student Directory !".center(100)
+end
+
+
 def print_header
 	puts "These are the students in my cohort at Makers Academy !".center(100)
 	puts "------------".center(100)
@@ -64,6 +69,7 @@ end
 def print_menu
 		puts "1. Input the students".center(100)
 		puts "2. Show the students".center(100)
+		puts "3. Save the list to file".center(100)
 		puts "9. Exit.".center(100)
 end
 
@@ -79,6 +85,8 @@ def process(selection)
 			input_students
 		when "2"
 			show_students
+		when "3"
+			save_students
 		when "9"
 			exit
 		else
@@ -93,6 +101,20 @@ def interactive_menu
 	end
 end
 
+def save_students
+	#Opening the file for writing.
+	file = File.open("students.csv", "w")
+	#Iterating over the array of students.
+	@students.each do |student|
+		student_data = [student[:name], student[:cohort]]
+		csv_line = student_data.join(",")
+		file.puts csv_line
+	end
+	file.close
+end
+
+
+print_welcome
 interactive_menu
 students = input_students
 print_header
