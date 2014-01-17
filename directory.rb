@@ -69,7 +69,8 @@ end
 def print_menu
 		puts "1. Input the students".center(100)
 		puts "2. Show the students".center(100)
-		puts "3. Save the list to file".center(100)
+		puts "3. Save the list of students to file".center(100)
+		puts "4. Load the list of students from file ".center(100)
 		puts "9. Exit.".center(100)
 end
 
@@ -87,6 +88,8 @@ def process(selection)
 			show_students
 		when "3"
 			save_students
+		when "4"
+			load_students
 		when "9"
 			exit
 		else
@@ -106,9 +109,18 @@ def save_students
 	file = File.open("students.csv", "w")
 	#Iterating over the array of students.
 	@students.each do |student|
-		student_data = [student[:name], student[:cohort]]
+		student_data = [student[:name], student[:cohort], student[:country]]
 		csv_line = student_data.join(",")
 		file.puts csv_line
+	end
+	file.close
+end
+
+def load_students
+		file = File.open("students.csv", "r")
+		file.readlines.each do |line|
+		name, cohort, country = line.chomp.split(',')
+		@students << {:name => name, :cohort => cohort.to_sym, :country => country}
 	end
 	file.close
 end
@@ -117,8 +129,8 @@ end
 print_welcome
 interactive_menu
 students = input_students
-print_header
-print_students_list
-print_footer
+# print_header
+# print_students_list
+# print_footer
 # first_letter_filter(students)
 # namelength(students)
