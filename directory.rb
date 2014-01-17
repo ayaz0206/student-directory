@@ -43,16 +43,16 @@ def input_students
 	puts "To finish, just press enter twice..".center(100)
 
 	# Now, to ask input from user to get the first name
-	name = gets.chomp
+	name = STDIN.gets.chomp
 	
 	# While the name is not empty, repeat this code
 	while !name.empty? do
 		# Add the student hash to the array
 		puts "Please enter the cohort."
-		cohort = gets.chomp
+		cohort = STDIN.gets.chomp
 
 		puts "Please enter the country"
-		country = gets.chomp
+		country = STDIN.gets.chomp
 		@students << {:name => name, :cohort => cohort, :country => country}
 		if @students.length > 1
 			puts "Now there are #{@students.length} students"
@@ -60,7 +60,7 @@ def input_students
 			puts "Now there is #{@students.length} student"
 		end
 		# Get another name from the user
-		name = gets.chomp
+		name = STDIN.gets.chomp
 		
 	end
 end
@@ -100,7 +100,7 @@ end
 def interactive_menu
 	loop do
 		print_menu
-		process(gets.chomp)
+		process(STDIN.gets.chomp)
 	end
 end
 
@@ -116,7 +116,7 @@ def save_students
 	file.close
 end
 
-def load_students
+def load_students(filename = "students.csv")
 		file = File.open("students.csv", "r")
 		file.readlines.each do |line|
 		name, cohort, country = line.chomp.split(',')
@@ -125,8 +125,21 @@ def load_students
 	file.close
 end
 
+def try_load_students
+	filename = ARGV.first #This is the first argument from the command line
+	return if filename.nil? #This is to get out of the method if it isnt given
+	if File.exists?(filename) #if it exists
+		load_students(filename)
+		puts "Loaded #{@students.length} from #{filename}"
+	else #if it doesnt exit
+		puts "Sorry, #{filename} cannot be found."
+		exit #Quits the program
+	end
+end
+
 
 print_welcome
+try_load_students
 interactive_menu
 students = input_students
 # print_header
